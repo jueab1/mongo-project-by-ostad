@@ -15,7 +15,8 @@ MongoClient.connect(URL,function (error,MyMongoClient) {
         // FindOneWithoutCondition(MyMongoClient)
         // FindOneWithCondition(MyMongoClient)
         // FindAllData(MyMongoClient)
-        FindAllDataByProjection(MyMongoClient)
+        // FindAllDataByProjection(MyMongoClient)
+        FindAllDataBYQuery(MyMongoClient)
     }
 
 })
@@ -120,6 +121,20 @@ function FindAllDataByProjection(MyMongoClient) {
     let FindProjection={projection:{Age:35}}
 
     MyCollection.find(FindObj,FindProjection).toArray(function (error, result) {
+        console.log(result)
+
+    })
+
+}
+// data find with query method
+
+function FindAllDataBYQuery(MyMongoClient) {
+    let MyDataBase=MyMongoClient.db("school")
+    let MyCollection=MyDataBase.collection("students")
+
+    let QueryObj={City:"Mymenshingh"}
+
+    MyCollection.find(QueryObj).toArray(function (error, result) {
         console.log(result)
 
     })

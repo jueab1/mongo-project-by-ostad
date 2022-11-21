@@ -17,7 +17,8 @@ MongoClient.connect(URL,function (error,MyMongoClient) {
         // FindAllData(MyMongoClient)
         // FindAllDataByProjection(MyMongoClient)
         // FindAllDataBYQuery(MyMongoClient)
-        FindAllDataByLimit(MyMongoClient)
+        // FindAllDataByLimit(MyMongoClient)
+        FindAllDataBySort(MyMongoClient)
     }
 
 })
@@ -146,10 +147,25 @@ function FindAllDataBYQuery(MyMongoClient) {
 function FindAllDataByLimit(MyMongoClient) {
     let MyDataBase=MyMongoClient.db("school")
     let MyCollection=MyDataBase.collection("students")
+
 //  an object is not required when using the limit method
 
     MyCollection.find().limit(5).toArray(function (error, result) {
         console.log(result)
+    })
+
+}
+// find data with sort method
+
+function FindAllDataBySort(MyMongoClient) {
+    let MyDataBase=MyMongoClient.db("school")
+    let MyCollection=MyDataBase.collection("students")
+    //in sort method data comes in reverse way & data comes in straight way
+    let SortObj={Roll:-1}
+
+    MyCollection.find().sort(SortObj).toArray(function (error, result) {
+        console.log(result)
+
     })
 
 }

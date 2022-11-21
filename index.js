@@ -198,7 +198,7 @@ function CreateNewCollection(MyMongoClient) {
     })
 
 }
-// delete data under the database {dropcollection()method}
+// deletecollection  under the database {dropcollection()method}
 
 function DeleteDataCollection(MyMongoClient) {
     let MyDataBase=MyMongoClient.db("school")

@@ -18,7 +18,8 @@ MongoClient.connect(URL,function (error,MyMongoClient) {
         // FindAllDataByProjection(MyMongoClient)
         // FindAllDataBYQuery(MyMongoClient)
         // FindAllDataByLimit(MyMongoClient)
-        FindAllDataBySort(MyMongoClient)
+        // FindAllDataBySort(MyMongoClient)
+        UpdateNewData(MyMongoClient)
     }
 
 })
@@ -169,4 +170,18 @@ function FindAllDataBySort(MyMongoClient) {
     })
 
 }
-// close
+// data update method
+
+function UpdateNewData(MyMongoClient) {
+    let MyDataBase=MyMongoClient.db("school")
+    let MyCollection=MyDataBase.collection("students")
+
+    let DataQuery={Roll:"3"}
+    let MyNewValues= {$set: {Name:"Rabbil Hasan Rupom",City:"Rangpur"}}
+
+    MyCollection.updateOne(DataQuery,MyNewValues,function (error, result) {
+
+        console.log(result)
+    })
+
+}

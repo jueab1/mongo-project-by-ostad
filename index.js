@@ -20,7 +20,8 @@ MongoClient.connect(URL,function (error,MyMongoClient) {
         // FindAllDataByLimit(MyMongoClient)
         // FindAllDataBySort(MyMongoClient)
         // UpdateNewData(MyMongoClient)
-        CreateNewCollection(MyMongoClient)
+        // CreateNewCollection(MyMongoClient)
+        DeleteDataCollection(MyMongoClient)
     }
 
 })
@@ -196,4 +197,14 @@ function CreateNewCollection(MyMongoClient) {
         console.log(result)
     })
 
+}
+// delete data under the database {dropcollection()method}
+
+function DeleteDataCollection(MyMongoClient) {
+    let MyDataBase=MyMongoClient.db("school")
+
+    MyDataBase.dropCollection("teachers",function (error, result) {
+
+        console.log(result)
+    })
 }

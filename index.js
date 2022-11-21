@@ -19,7 +19,8 @@ MongoClient.connect(URL,function (error,MyMongoClient) {
         // FindAllDataBYQuery(MyMongoClient)
         // FindAllDataByLimit(MyMongoClient)
         // FindAllDataBySort(MyMongoClient)
-        UpdateNewData(MyMongoClient)
+        // UpdateNewData(MyMongoClient)
+        CreateNewCollection(MyMongoClient)
     }
 
 })
@@ -180,6 +181,17 @@ function UpdateNewData(MyMongoClient) {
     let MyNewValues= {$set: {Name:"Rabbil Hasan Rupom",City:"Rangpur"}}
 
     MyCollection.updateOne(DataQuery,MyNewValues,function (error, result) {
+
+        console.log(result)
+    })
+
+}
+//  create new collection data under the database
+
+function CreateNewCollection(MyMongoClient) {
+    let MyDataBase=MyMongoClient.db("school")
+
+    MyDataBase.createCollection("teachers",function (error, result) {
 
         console.log(result)
     })

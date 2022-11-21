@@ -19,7 +19,7 @@ MongoClient.connect(URL,function (error,MyMongoClient) {
     }
 
 })
-
+// data insert to database
 function InsertData(MyMongoClient) {
     let MyDataBase=MyMongoClient.db("school")
      let MyCollection=MyDataBase.collection("students")
